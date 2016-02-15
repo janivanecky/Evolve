@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="win32main.cpp" />
+    <ClCompile Include="src\Graphics.cpp" />
+    <ClCompile Include="src\Core\Math.cpp" />
+    <ClCompile Include="src\Core\String.cpp" />
+    <ClCompile Include="src\PlatformFunctions.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Graphics.h" />
+    <ClInclude Include="src\main.h" />
+    <ClInclude Include="src\Core\Def.h" />
+    <ClInclude Include="src\Core\Math.h" />
+    <ClInclude Include="src\Core\String.h" />
+    <ClInclude Include="src\PlatformFunctions.h" />
+    <ClInclude Include="src\Game.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="src\TexturePixelShader.hlsl" />
+    <FxCompile Include="src\TextureVertexShader.hlsl" />
+  </ItemGroup>
+</Project>
