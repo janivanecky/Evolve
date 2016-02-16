@@ -278,7 +278,6 @@ float LerpAngles(float a1, float a2)
 
 uint32 topVal = 0;
 int stagnation = 0;
-bool unstag = false;
 uint32 score = 0;
 float topTime = 100.0f;
 
@@ -290,7 +289,6 @@ void NextGen(Context *context)
 	uint32 topID[10] = {0};
 	float topTimes[10] = {0};
 	GetTop10(context->games, 50, top, topID, topTimes);
-	int x = 12;
 	float rotations[10][10];
 	uint32 newScore = 0;
 	float newTime = 0;
@@ -306,61 +304,9 @@ void NextGen(Context *context)
 	newScore /= 10;
 	newTime /= 10.0f;
 	bool update = true;
-	if (newScore < score)
+	if (newScore < score || newTime > topTime)
 	{
 		update = false;
-	}
-	if (newTime > topTime)
-	{
-		update = false;
-	}
-	if (stagnation > 5)
-	{
-		unstag = true;
-	}
-	if(unstag)
-	{
-		update = true;
-		--stagnation;
-		if (stagnation == 0)
-		{
-			unstag = true;
-		}
-	}
-	if(update)
-	{
-		if (!unstag)
-		{
-			stagnation = 0;
-		}
-		topVal = top[0];
-		score = newScore;
-		topTime = newTime;
-		float nextRotations[5][10];
-		for (uint32 i = 0; i < 50; ++i)
-		{
-			float angles[10];
-			for (uint32 a = 0; a < 10; ++a)
-			{
-				float wiggled = rotations[i / 5][a];
-				wiggled += (((rand() % 1000) / 1000.0f) * PI / 8.0f) - PI / 16.0f;
-				if (wiggled < 0)
-				{
-					wiggled += PI2;
-				}
-				wiggled = Math::Fmod(wiggled, PI2);
-				angles[a] = wiggled;
-			}
-			Games::Init(&context->games[i], angles);
-		}
-	}
-	else
-	{
-		++stagnation;
-		for (uint32 i = 0; i < 50; ++i)
-		{
-			Games::Reset(&context->games[i]);
-		}
 	}
 
 	if (top[0] > bestScore || (top[0] == bestScore && topTimes[0] < bestTime))
@@ -376,9 +322,37 @@ void NextGen(Context *context)
 	}
 	else
 	{
+		++stagnation;
 		Games::Reset(&context->topGame);
 	}
 
+
+	topVal = top[0];
+	score = newScore;
+	topTime = newTime;
+	float nextRotations[5][10];
+	float mutationRate = PI / 8.0f;
+	if (stagnation > 20)
+	{
+		stagnation = 0;
+		mutationRate *= 2.0f;
+	}
+	for (uint32 i = 0; i < ARRAYSIZE(context->games); ++i)
+	{
+		float angles[10];
+		for (uint32 a = 0; a < 10; ++a)
+		{
+			float wiggled = rotations[i / 5][a];
+			wiggled += (((rand() % 1000) / 1000.0f) * mutationRate) - mutationRate / 2.0f;
+			if (wiggled < 0)
+			{
+				wiggled += PI2;
+			}
+			wiggled = Math::Fmod(wiggled, PI2);
+			angles[a] = wiggled;
+		}
+		Games::Init(&context->games[i], angles);
+	}
 }
 
 float time = 0;
