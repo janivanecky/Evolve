@@ -1,6 +1,6 @@
 # Evolve
 
-This is a project to try out optimization by evolutionary algorithms. 
+This is a project to try out the optimization by evolutionary algorithm. 
 
 ##What's the task to optimize?
 
