@@ -7,9 +7,9 @@ This is a project to try out the optimization by evolutionary algorithm.
 ![alt text](https://github.com/janivanecky/Evolve/blob/master/Win32RTRT/img/img1.png "Evolutionary red circle")
 
 * Everything happens in the red circle
-* 10 cannons (green dots in the picture) are randomly placed (but consistently across generations) within red circle
-* Each cannon shoots a ball (gray dots in the picture) that happens to fly near the cannon
-* Each cannon has a parameter that defines the direction in which it shoots balls
+* 10 cannons (green dots in the picture) are randomly placed (but consistently across generations) within the red circle
+* Each cannon shoots a ball (gray dots in the picture) that happens to fly near it
+* Each cannon has a parameter that defines the direction in which it shoots the nearby ball
 * Ball is accelerated after being shot from the cannon, but slows to a constant velocity in short time
 * If the ball hits the wall of the red circle it bounces back unless it has sufficient velocity (provided by a cannon) to escape 
 
