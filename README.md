@@ -23,13 +23,19 @@ This is a project to try out the optimization by evolutionary algorithm.
 * Each generation contains 50 different "organisms" (cannons with different directions)
 * Next generation is selected from 10 fittest organisms from previous generation with random mutation applied to them
 * Best current solution is being tracked and if it doesn't change for 20 generations, mutation rate is increased.
+* Each generation is run for 30 seconds.
+
+##Controls
+
+* Left mouse button switches between normal speed and 30x speedup.
 
 ##How about some results?
 
-All the balls are out in 11.6 seconds
+In the first generation, in almost all the cases, cannons don't shoot all the balls out in 30 seconds. 
+
+All the balls are out in 11.6 seconds after ~150 generations
 ![alt text](https://github.com/janivanecky/Evolve/blob/master/Win32RTRT/img/ev.gif "Evolutionary red circle")
 
-This one is really fast, 5.6 seconds to get all the balls out.
+This one is really fast, 5.6 seconds to get all the balls out after ~200 generations (different seed/first generation from previous result)
 ![alt text](https://github.com/janivanecky/Evolve/blob/master/Win32RTRT/img/ev2.gif "Evolutionary red circle")
-
 
