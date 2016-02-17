@@ -37,5 +37,6 @@ All the balls are out in 11.6 seconds after ~150 generations
 ![alt text](https://github.com/janivanecky/Evolve/blob/master/Win32RTRT/img/ev.gif "Evolutionary red circle")
 
 This one is really fast, 5.6 seconds to get all the balls out after ~200 generations (different seed/first generation from previous result)
+
 ![alt text](https://github.com/janivanecky/Evolve/blob/master/Win32RTRT/img/ev2.gif "Evolutionary red circle")
 
