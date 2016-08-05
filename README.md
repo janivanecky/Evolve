@@ -23,7 +23,7 @@ This is a project to try out the optimization by evolutionary algorithm.
 * Each generation contains 50 different "organisms" (cannons with different directions)
 * Next generation is selected from 10 fittest organisms from previous generation with random mutation applied to them
 * Best current solution is being tracked and if it doesn't change for 20 generations, mutation rate is increased.
-* Each generation is run for 30 seconds.
+* Each generation is ran for 30 seconds.
 
 ##Controls
 
